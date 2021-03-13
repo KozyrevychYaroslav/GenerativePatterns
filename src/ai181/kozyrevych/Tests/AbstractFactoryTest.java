@@ -1,17 +1,14 @@
 package ai181.kozyrevych.Tests;
 
+import ai181.kozyrevych.abstractFactory.*;
 import ai181.kozyrevych.abstractFactory.Apple.DevicesApple;
 import ai181.kozyrevych.abstractFactory.Apple.PCApple;
 import ai181.kozyrevych.abstractFactory.Apple.PhoneApple;
 import ai181.kozyrevych.abstractFactory.Apple.TVApple;
-import ai181.kozyrevych.abstractFactory.Devices;
-import ai181.kozyrevych.abstractFactory.PC;
-import ai181.kozyrevych.abstractFactory.Phone;
 import ai181.kozyrevych.abstractFactory.Samsung.DevicesSamsung;
 import ai181.kozyrevych.abstractFactory.Samsung.PCSamsung;
 import ai181.kozyrevych.abstractFactory.Samsung.PhoneSamsung;
 import ai181.kozyrevych.abstractFactory.Samsung.TVSamsung;
-import ai181.kozyrevych.abstractFactory.TV;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -65,5 +62,13 @@ public class AbstractFactoryTest {
                 () -> assertSame("TVApple", devices.getTV().getName()));
     }
 
+    @Test
+    @DisplayName("Testing create devices")
+    void create() {
+        CreateDevices creation = new CreateDevices(new DevicesSamsung());
+        creation.createDevices();
+        creation = new CreateDevices(new DevicesApple());
+        creation.createDevices();
+    }
 
 }
